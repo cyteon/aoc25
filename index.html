@@ -8,6 +8,88 @@
     </head>
 
     <body>
-        <h1>Hello, World!</h1>
+        <div class="content">
+            <h1>Advent of Code 25</h1>
+
+            <div class="days">
+                <div class="day">
+                    <h2>Day 1</h2>
+
+                    <div class="code">
+                        <div>
+                            <label>Part 1: </label>
+<pre>
+code = 0
+pointing = 50
+
+with open("day-1/input.txt", "r") as file:
+    content = file.read()
+
+    for line in content.split("\n"):
+        chars = list(line)
+
+        if len(chars) > 0:
+            direction = chars.pop(0)
+            value = int("".join(chars))
+
+            print("\n%s, %s%s" % (pointing, direction, value)) # just for debugging
+
+            if direction == "L":
+                pointing += value
+                pointing %= 100
+            else:
+                pointing -= value
+                pointing %= 100
+            
+            print("%s\n" % pointing)
+
+            if pointing == 0:
+                code += 1
+
+print(code)
+</pre>
+                        </div>
+
+                        <div>
+                            <label>Part 2: </label>
+<pre>
+code = 0
+pointing = 50
+
+with open("day-1/input.txt", "r") as file:
+    content = file.read()
+
+    for line in content.split("\n"):
+        chars = list(line)
+
+        if len(chars) > 0:
+            direction = chars.pop(0)
+            value = int("".join(chars))
+
+            print("\n%s, %s%s" % (pointing, direction, value)) # just for debugging
+
+            if direction == "L":
+                for i in range(value):
+                    pointing += 1
+                    pointing %= 100
+
+                    if pointing == 0:
+                        code += 1
+            else:
+                for i in range(value):
+                    pointing -= 1
+                    pointing %= 100
+
+                    if pointing == 0:
+                        code += 1
+            
+            print("%s\n" % pointing)
+
+print(code)
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
